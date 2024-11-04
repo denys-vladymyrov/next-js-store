@@ -9,6 +9,8 @@ function NavSearch() {
   const { replace } = useRouter();
   const [search, setSearch] = useState(searchParams.get('search')?.toString() || '');
 
+  const searchStr = searchParams.get('search');
+
   const handleSearch = useDebouncedCallback((value: string) => {
     const params = new URLSearchParams(searchParams);
 
@@ -22,10 +24,10 @@ function NavSearch() {
   }, 300);
 
   useEffect(() => {
-    if (!searchParams.get('search')) {
+    if (!searchStr) {
       setSearch('');
     }
-  }, [searchParams.get('search')]);
+  }, [searchStr]);
 
   return (
     <Input
