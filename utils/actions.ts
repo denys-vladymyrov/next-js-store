@@ -1,5 +1,15 @@
+'use server';
+
 import db from '@/utils/db';
 import { redirect } from 'next/navigation';
+
+export const createProductAction = async (
+    prevState: any,
+    formData: FormData
+): Promise<{ message: string }> => {
+  console.log('dsd')
+  return { message: 'product created' };
+};
 
 export const fetchFeaturedProducts = async () => {
   const products = await db.product.findMany({
@@ -10,7 +20,7 @@ export const fetchFeaturedProducts = async () => {
   return products;
 };
 
-export const fetchAllProducts = ({ search = '' }: { search: string }) => {
+export const fetchAllProducts = async ({ search = '' }: { search: string }) => {
   return db.product.findMany({
     where:{
       OR: [
