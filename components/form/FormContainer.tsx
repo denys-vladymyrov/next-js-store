@@ -21,7 +21,7 @@ function FormContainer({action, children}
     if (state.message) {
       toast({ description: state.message });
     }
-  }, [state.message, toast]);
+  }, [state, toast]);
 
   return <form action={formAction}>{children}</form>;
 }

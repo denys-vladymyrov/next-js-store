@@ -3,7 +3,7 @@
 import { currentUser } from '@clerk/nextjs/server';
 import db from '@/utils/db';
 import { redirect } from 'next/navigation';
-import {productSchema} from "@/utils/schemas";
+import { productSchema, validateWithZodSchema } from "@/utils/schemas";
 
 const renderError = (error: unknown): { message: string } => {
   console.log(error);
@@ -28,7 +28,7 @@ export const createProductAction = async (
 
   try {
     const rawData = Object.fromEntries(formData);
-    const validatedFields = productSchema.parse(rawData);
+    const validatedFields = validateWithZodSchema(productSchema, rawData);
 
     await db.product.create({
       data: {
