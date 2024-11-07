@@ -5,7 +5,7 @@ import { currentUser } from '@clerk/nextjs/server';
 import db from '@/utils/db';
 import { redirect } from 'next/navigation';
 import {imageSchema, productSchema, validateWithZodSchema} from "@/utils/schemas";
-import {uploadImage} from "@/utils/supabase";
+import {deleteImage, uploadImage} from "@/utils/supabase";
 
 const renderError = (error: unknown): { message: string } => {
   console.log(error);
@@ -105,19 +105,18 @@ export const fetchSingleProduct = async (productId: string) => {
   return product;
 };
 
-
-
 export const deleteProductAction = async (prevState: { productId: string }) => {
   const { productId } = prevState;
   await getAdminUser();
 
   try {
-    await db.product.delete({
+    const product = await db.product.delete({
       where: {
         id: productId,
       },
     });
 
+    await deleteImage(product.image);
     revalidatePath('/admin/products');
     return { message: 'product removed' };
   } catch (error) {
