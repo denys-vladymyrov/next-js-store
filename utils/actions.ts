@@ -1,7 +1,7 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
-import { currentUser } from '@clerk/nextjs/server';
+import {auth, currentUser} from '@clerk/nextjs/server';
 import db from '@/utils/db';
 import { redirect } from 'next/navigation';
 import {imageSchema, productSchema, reviewSchema, validateWithZodSchema} from "@/utils/schemas";
@@ -357,4 +357,34 @@ export const fetchProductRating = async (productId: string) => {
     count: result[0]?._count.rating ?? 0,
   };
 };
+
+export const fetchCartItems = async () => {
+  const { userId } = auth();
+
+  const cart = await db.cart.findFirst({
+    where: {
+      clerkId: userId ?? '',
+    },
+    select: {
+      numItemsInCart: true,
+    },
+  });
+  return cart?.numItemsInCart || 0;
+};
+
+const fetchProduct = async () => {};
+
+export const fetchOrCreateCart = async () => {};
+
+const updateOrCreateCartItem = async () => {};
+
+export const updateCart = async () => {};
+
+export const addToCartAction = async (prevState , formData: FormData) => {
+  return { message: 'Product added to the cart' }
+};
+
+export const removeCartItemAction = async () => {};
+
+export const updateCartItemAction = async () => {};
 
