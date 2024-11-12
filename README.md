@@ -14,7 +14,7 @@ pnpm dev
 bun dev
 ```
 
-## Technologies Used
+## Technologies used
 
 Next.js, TypeScript, Prisma, Zod, Shadcn, Axios, Stripe, Supabase, Vercel.
 
