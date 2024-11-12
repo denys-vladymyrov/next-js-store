@@ -16,7 +16,15 @@ bun dev
 
 ## Technologies used
 
-Next.js, TypeScript, Prisma, Zod, Shadcn, Axios, Stripe, Supabase, Vercel.
+1. Next.js
+2. TypeScript
+3. Prisma
+4. Zod
+5. Shadcn ui
+6. Axios
+7. Stripe
+8. Supabase
+9. Vercel.
 
 Production URL: https://next-js-store-gamma.vercel.app/
 
