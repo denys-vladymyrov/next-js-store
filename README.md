@@ -25,6 +25,7 @@ bun dev
 7. Stripe
 8. Supabase
 9. Vercel.
+10. Clerk User Management Platform.
 
 Production URL: https://next-js-store-gamma.vercel.app/
 
