@@ -18,14 +18,15 @@ bun dev
 
 1. Next.js
 2. TypeScript
-3. Prisma
-4. Zod
-5. Shadcn ui
-6. Axios
-7. Stripe
-8. Supabase
-9. Vercel.
-10. Clerk User Management Platform.
+3. Tailwind CSS
+4. Prisma
+5. Zod
+6. Shadcn ui
+7. Axios
+8. Stripe
+9. Supabase
+10. Vercel.
+11. Clerk User Management Platform.
 
 Production URL: https://next-js-store-gamma.vercel.app/
 
